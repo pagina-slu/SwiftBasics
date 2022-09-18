@@ -14,6 +14,8 @@ var diceRoll = 0
 gameLoop: while square != finalSquare {
     diceRoll += 1
     if diceRoll == 7 { diceRoll = 1 }
+    print(square)
+    print(diceRoll)
     switch square + diceRoll {
     case finalSquare:
         // diceRoll will move us to the final square, so the game is over

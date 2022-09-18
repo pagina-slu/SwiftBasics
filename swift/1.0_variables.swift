@@ -48,9 +48,3 @@ if str != nil {
    print("str has nil value")
 }
 
-
-if let hasValue = str {         // this binds an optional variable to know if it contains a value or not
-   print("The value is \"\(str!)\"")      
-} else {
-   print("str has nil value")
-}
