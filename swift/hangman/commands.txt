@@ -1,3 +1,0 @@
-set SWIFTFLAGS=-sdk %SDKROOT% -resource-dir %SDKROOT%\usr\lib\swift -I %SDKROOT%\usr\lib\swift -L %SDKROOT%\usr\lib\swift\windows
-
-swiftc %SWIFTFLAGS% -emit-executable -o hangman.exe hangman.swift

@@ -1,0 +1,15 @@
+set SWIFTFLAGS=-sdk %SDKROOT% -resource-dir %SDKROOT%\usr\lib\swift -I %SDKROOT%\usr\lib\swift -L %SDKROOT%\usr\lib\swift\windows
+
+swiftc %SWIFTFLAGS% -emit-executable -o hangman.exe hangman.swift
+
+swiftc %SWIFTFLAGS% -emit-executable -o variables.exe 1.0_variables.swift
+swiftc %SWIFTFLAGS% -emit-executable -o quiz1.exe 1.1_pop_quiz.swift
+swiftc %SWIFTFLAGS% -emit-executable -o quiz2.exe 1.2_pop_quiz.swift
+swiftc %SWIFTFLAGS% -emit-executable -o arrays.exe 2.0_arrays.swift
+swiftc %SWIFTFLAGS% -emit-executable -o conditionals.exe 3.0_conditionals.swift
+swiftc %SWIFTFLAGS% -emit-executable -o quiz3.exe 3.1_pop_quiz.swift
+swiftc %SWIFTFLAGS% -emit-executable -o loops.exe 4.0_loops.swift
+swiftc %SWIFTFLAGS% -emit-executable -o dictionaries.exe 5.0_dictionaries.swift
+swiftc %SWIFTFLAGS% -emit-executable -o functions.exe 6_functions.swift
+swiftc %SWIFTFLAGS% -emit-executable -o helloworld.exe helloworld.swift
+swiftc %SWIFTFLAGS% -emit-executable -o snakeAndLadders.exe snakeAndLadders.swift
