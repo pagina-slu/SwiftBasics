@@ -6,10 +6,19 @@ let sixtyFourBit:UInt64 = UInt64.max    //64-bit unsigned integer
 
 // let not8Bit:UInt8 = 2000    // overflows 8bit
 
-let name = "Taylor Swift"
+var name = "Taylor Swift"
 let 💦 = "This is wet"
 
 print(💦)
+
+//tuples
+let http404Error = (404, "Not Found") // http404Error is of type (Int, String),
+
+print("The status code is \(http404Error.0)")
+
+let (statusCode, statusMessage) = http404Error      //decoposing tuples 
+print("The status message is \(statusMessage)")
+
 
 
 // // Var vs Let
@@ -24,3 +33,24 @@ print(💦)
 // print(text1)
 
 // //text2 = "Change value"
+
+
+
+
+// Nil and optionals
+
+var str: String? 
+str = "str is not nil"
+
+if str != nil {
+   print(str!)      // exclamation mark(!) unwarps the value of optionals
+} else {
+   print("str has nil value")
+}
+
+
+if let hasValue = str {         // this binds an optional variable to know if it contains a value or not
+   print("The value is \"\(str!)\"")      
+} else {
+   print("str has nil value")
+}
