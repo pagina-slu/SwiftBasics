@@ -15,7 +15,7 @@ if !loginSuccessful {
     exit(0)
 }
 
-print("Login successful!")
+print("Login successful!\n")
 
 var currentUser = User(username: username, password: password)
 var currentWord = getNewWord(words: words)
@@ -24,9 +24,9 @@ var guessedWordArray = Array(repeating: "_", count: currentWord.count)
 var guessedWord = guessedWordArray.joined(separator: "")
 var guessedLetters: [Character] = []
 
+print("Word: \(currentWord)")
 print("Word: \(guessedWord)")
 while (currentUser.lives! != 0) {
-
     let input = readCharacter()
 
     if guessedLetters.contains(input) {
@@ -42,14 +42,15 @@ while (currentUser.lives! != 0) {
             guessedWord = guessedWordArray.joined(separator: "")
         }
         print("You guessed a letter! Your formed word: \(guessedWord)")
+
         // Validate word
         if guessedWord == currentWord {
-            print("You guessed the word!")
+            print("You guessed the word!\n")
             currentWord = getNewWord(words: words)
             guessedWordArray = Array(repeating: "_", count: currentWord.count)
             guessedWord = guessedWordArray.joined(separator: "")
             guessedLetters = []
-
+            print("New word: \(currentWord)")
             print("New word: \(guessedWord)")
         }
 
@@ -60,7 +61,6 @@ while (currentUser.lives! != 0) {
     }
 }
 print("Game over! You lost all your lives.")
-// print(login(username: username, password: password) ? "Login successful!" : "Login failed :(")
 
 // Functions
 func getWords(filename: String)  -> [String] {
@@ -115,7 +115,7 @@ func readCharacter() -> Character {
         if input.count == 1 {
             break
         }
-        print("Please enter a character only")
+        print("Please enter a character\n")
     }
     return Character(input)
 }
@@ -130,8 +130,6 @@ func guessLetter(letter: Character, word: String) -> Bool {
 }
 
 func getIndicesOfLetter(letter: Character, word: String) -> [Int] {
-    // convert string to array
-    //
     var indices: [Int] = []
     let array = Array(word)
     for i in 0..<word.count {
@@ -156,6 +154,7 @@ class User {
         self.password = nil
         self.lives = nil
     }
+
     init(username: String, password: String) {
         self.username = username
         self.password = password
