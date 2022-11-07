@@ -1,7 +1,9 @@
 import Foundation
 
 // Main Code
+/// Holds the list of all users
 let users = getUsers(filename: "users.txt")
+/// Holds the list of all words available
 let words = getWords(filename: "words.txt")
 
 print("Enter username: ", terminator: "")
@@ -19,10 +21,14 @@ if !loginSuccessful {
 
 print("Login successful!\n")
 
+/// Holds the current user
 var currentUser = User(username: username, password: password)
+/// Holds the current word to be guessed
 var currentWord = getNewWord(words: words)
 
+/// Holds the list of words already guessed
 var guessedWordArray = Array(repeating: "_", count: currentWord.count)
+/// Holds the incomplete word being guessed by the player
 var guessedWord = guessedWordArray.joined(separator: "")
 var guessedLetters: [Character] = []
 
@@ -75,7 +81,11 @@ print("Game over! You lost all your lives.")
 
 // Functions
 
-// Get list of words from filename
+/// Get list of words
+///
+/// - Parameter filename: The filename of the file to be read
+///
+/// - Returns: A list of words
 func getWords(filename: String) -> [String] {
     var words: [String] = []
     do {
@@ -93,7 +103,13 @@ func getWords(filename: String) -> [String] {
     return words
 }
 
-// Get list of users from filename
+/**
+Get list of users
+
+ - Parameter filename: The filename of the file to be read
+
+ - Returns: A list of users
+*/
 func getUsers(filename: String) -> [User] {
     var users: [User] = []
     do {
@@ -115,6 +131,11 @@ func getUsers(filename: String) -> [User] {
     return users
 }
 
+/// - Parameters:
+///     - username: The username of the user
+///     - password: The password of the user
+///
+/// - Returns: ``true`` if the user exists, and ``false`` if it does not
 func login(username: String, password: String) -> Bool {
     for user in users { // Iterate through users array
         if user.username == username && user.password == password { // If user exists
@@ -124,6 +145,9 @@ func login(username: String, password: String) -> Bool {
     return false
 }
 
+/// Reads a character from the keyboard
+///
+/// - Returns: A character from the keyboard
 func readCharacter() -> Character {
     var input: String = ""
     while true { // Loop until input is only one character
@@ -140,6 +164,11 @@ func readCharacter() -> Character {
     return Character(input)
 }
 
+/// Parameters:
+///     - letter: The guessed letter
+///     - word: The word where the letter is guessed
+///
+/// Returns: ``true`` if the given letter is in the given word, and ``false`` if not
 func guessLetter(letter: Character, word: String) -> Bool {
     for c in word { // Iterate through the letters of the word
         if (letter == c) { // If the guessed letter is in the word
@@ -149,6 +178,13 @@ func guessLetter(letter: Character, word: String) -> Bool {
     return false
 }
 
+/// Gets the indices where a letter appears in a word
+///
+/// Parameters:
+///     - letter: The letter to be found in the word
+///     - word: The word where the letter will be found
+///
+/// Returns: An array of indices where a letter appears in a word
 func getIndicesOfLetter(letter: Character, word: String) -> [Int] {
     var indices: [Int] = []
     let array = Array(word) // Create array of characters based on word
@@ -160,13 +196,21 @@ func getIndicesOfLetter(letter: Character, word: String) -> [Int] {
     return indices
 }
 
+/// Parameter words: An array of words
+///
+/// Returns: Returns a random word from the given array of words
 func getNewWord(words: [String]) -> String {
     return words[Int.random(in: 0..<words.count)] // Return random word
 }
 
 class User {
+    /// The username of the user
     var username: String?
+
+    /// The password of the user
     var password: String?
+
+    /// The number of lives of the user
     var lives: Int?
 
     init() {
