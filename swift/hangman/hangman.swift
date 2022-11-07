@@ -7,11 +7,17 @@ let users = getUsers(filename: "users.txt")
 let words = getWords(filename: "words.txt")
 
 print("Enter username: ", terminator: "")
+
+/// Holds the username of the User
 let username: String = readLine()!
+
 print("Enter password: ", terminator: "")
+
+/// Holds the password of the user
 let password: String = readLine()!
 
 // Authenticate user
+/// Holds the login status
 let loginSuccessful: Bool = login(username: username, password: password)
 if !loginSuccessful {
     print("Login failed :(")
@@ -30,6 +36,7 @@ var currentWord = getNewWord(words: words)
 var guessedWordArray = Array(repeating: "_", count: currentWord.count)
 /// Holds the incomplete word being guessed by the player
 var guessedWord = guessedWordArray.joined(separator: "")
+/// Holds the list of guessed letters
 var guessedLetters: [Character] = []
 
 // print("Word: \(currentWord)")
@@ -132,6 +139,7 @@ func getUsers(filename: String) -> [User] {
 }
 
 /// - Parameters:
+///
 ///     - username: The username of the user
 ///     - password: The password of the user
 ///
@@ -164,11 +172,14 @@ func readCharacter() -> Character {
     return Character(input)
 }
 
-/// Parameters:
+/// Allows the user to guess a letter in a word
+///
+/// - Parameters:
+///
 ///     - letter: The guessed letter
 ///     - word: The word where the letter is guessed
 ///
-/// Returns: ``true`` if the given letter is in the given word, and ``false`` if not
+/// - Returns: true if the given letter is in the given word, and false if not
 func guessLetter(letter: Character, word: String) -> Bool {
     for c in word { // Iterate through the letters of the word
         if (letter == c) { // If the guessed letter is in the word
@@ -180,11 +191,12 @@ func guessLetter(letter: Character, word: String) -> Bool {
 
 /// Gets the indices where a letter appears in a word
 ///
-/// Parameters:
+/// - Parameters:
+///
 ///     - letter: The letter to be found in the word
 ///     - word: The word where the letter will be found
 ///
-/// Returns: An array of indices where a letter appears in a word
+/// - Returns: An array of indices where a letter appears in a word
 func getIndicesOfLetter(letter: Character, word: String) -> [Int] {
     var indices: [Int] = []
     let array = Array(word) // Create array of characters based on word
@@ -196,13 +208,14 @@ func getIndicesOfLetter(letter: Character, word: String) -> [Int] {
     return indices
 }
 
-/// Parameter words: An array of words
+/// - Parameter words: An array of words
 ///
-/// Returns: Returns a random word from the given array of words
+/// - Returns: Returns a random word from the given array of words
 func getNewWord(words: [String]) -> String {
     return words[Int.random(in: 0..<words.count)] // Return random word
 }
 
+/// The class for the User
 class User {
     /// The username of the user
     var username: String?
